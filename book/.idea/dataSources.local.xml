@@ -11,10 +11,5 @@
       <user-name>root</user-name>
       <introspection-schemas>*:school_book</introspection-schemas>
     </data-source>
-    <data-source name="db" uuid="9aef1ca3-df2d-4a85-ac9e-b5b894454eee">
-      <database-info product="SQLite" version="3.16.1" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
-      <introspection-schemas>*:main</introspection-schemas>
-    </data-source>
   </component>
 </project>
