@@ -1,0 +1,42 @@
+GET http://localhost:8080/http://127.0.0.0:8080/api/user/test
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/http://127.0.0.0:8080/api/user/test
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/http://127.0.0.0:8080/api/user/test
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/http://127.0.0.0:8080/api/user/test
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/http://127.0.0.0:8080/api/user/test
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/http://127.0.0.0:8080/api/user/test
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+

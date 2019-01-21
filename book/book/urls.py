@@ -16,6 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from user.api import register, send_verify_code, phone_login, user_login
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/user/register/$', register),
+    url(r'^api/user/verify_code/$', send_verify_code),
+    url(r'^api/user/phone_login/$', phone_login),
+    url(r'^api/user/user_login/$', user_login),
 ]
