@@ -15,3 +15,22 @@ class User(models.Model):
             'u_phone': self.u_phone,
         }
         return user_msg
+
+
+class Profile(models.Model):
+    u_id = models.CharField(max_length=128)
+    p_name = models.CharField(max_length=64)
+    p_address = models.CharField(max_length=256)
+    p_phone = models.CharField(max_length=32)
+
+    def to_dict(self):
+        return {
+            'name': self.p_name,
+            'address': self.p_address,
+            'phone': self.p_phone
+        }
+
+    @classmethod
+    def search(cls, uid):
+        u_p = cls.objects.filter(u_id=uid).first()
+        return u_p.to_dict()

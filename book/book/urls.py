@@ -19,6 +19,7 @@ from django.contrib import admin
 from books.api import best_seller, computer_book, life_book, success_book, sale_descending_order, sort_type_book
 from books.api import price_descending_order, price_ascending_order
 from cart.api import add_goods_cart, add_cart_num, reduce_cart_num, is_select_good, is_all_select_good, is_delete_cart
+from order.api import order_status1, order_status2, order_status3, order_status4
 from user.api import register, send_verify_code, phone_login, user_login
 
 urlpatterns = [
@@ -43,4 +44,9 @@ urlpatterns = [
     url(r'^api/cart/is_select_good/$', is_select_good),
     url(r'^api/cart/is_all_select_good/$', is_all_select_good),
     url(r'^api/cart/is_delete_cart/$', is_delete_cart),
+
+    url(r'^api/order/order_status1/$', order_status1),
+    url(r'^api/order/order_status2/$', order_status2),
+    url(r'^api/order/order_status3/$', order_status3),
+    url(r'^api/order/order_status4/$', order_status4),
 ]
