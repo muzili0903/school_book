@@ -19,6 +19,7 @@ class Goods(models.Model):
 
     def to_dict(self):
         return {
+            'g_id':self.g_id,
             'comment': [comment.to_dict() for comment in Comment.objects.filter(g_id=self.g_id)],
             'g_name': self.g_name,
             'g_author': self.g_author,

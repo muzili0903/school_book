@@ -1,4 +1,3 @@
-from django.shortcuts import render
 
 # Create your views here.
 from books.models import Goods
