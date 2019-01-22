@@ -5,12 +5,8 @@
 @Author  : muzili
 @File    : test
 '''
-import uuid
-import time
-import datetime
-
-t = str(time.time())
-u = str(uuid.uuid4())
-
-
-print(u+t)
+from datetime import datetime
+now = datetime.now()
+tim = now.strftime('%Y-%m-%d %H:%M:%S')
+print(tim)
+print(type(tim))

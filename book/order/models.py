@@ -1,7 +1,10 @@
 from django.db import models
 
-
 # Create your models here.
+from cart.models import CartHistory
+from user.models import Profile
+
+
 class Order(models.Model):
     '''
     订单状态：
@@ -12,13 +15,20 @@ class Order(models.Model):
     '''
     o_id = models.CharField(max_length=128, unique=True, verbose_name='订单号')
     u_id = models.CharField(max_length=128, verbose_name='买家ID')
-    g_id = models.CharField(max_length=128, verbose_name='商品ID')
-    o_num = models.IntegerField(verbose_name='数量')
     o_date = models.DateTimeField(auto_now_add=True, verbose_name='下单时间')
     o_message = models.CharField(max_length=128, verbose_name='留言')
     o_total_price = models.FloatField(verbose_name='总价')
-    o_name = models.CharField(max_length=64, verbose_name='收件人')
-    o_address = models.CharField(max_length=128, verbose_name='收件地址')
-    o_phone = models.CharField(max_length=32, verbose_name='联系电话')
     o_status = models.IntegerField(verbose_name='订单状态')
     o_is_delete = models.BooleanField(default=False, verbose_name='是否删除订单')
+
+    def to_dict(self):
+        cart = CartHistory.mark(self.u_id, self.o_id)
+        return {
+            'oid': self.o_id,
+            'goods': cart['good'],
+            'date': self.o_date.strftime('%Y-%m-%d %H:%M:%S'),
+            'message': self.o_message,
+            'total_price': self.o_total_price,
+            'user': Profile.search(self.u_id),
+            'status': self.o_status
+        }

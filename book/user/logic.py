@@ -30,10 +30,14 @@ def check_username(username):
     return True
 
 
-def create_user(phone, username, password):
+def produce_id():
     t = str(time.time())
     u = str(uuid.uuid4())
-    uid = u + t
+    return u + t
+
+
+def create_user(phone, username, password):
+    uid = produce_id()
     User.objects.create(u_id=uid, u_phone=phone, u_name=username, u_password=password)
     return {'msg': 'register success'}
 
