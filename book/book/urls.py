@@ -21,7 +21,7 @@ from books.api import price_descending_order, price_ascending_order
 from cart.api import add_goods_cart, add_cart_num, reduce_cart_num, is_select_good, is_all_select_good, is_delete_cart
 from mine.api import change_password, look_wait_payment, look_wait_goods, look_wait_comments, look_finish_comment, \
     look_finish_order
-from order.api import order_status1, order_status2, order_status3, order_status4
+from order.api import order_status1, order_status2, order_status3, order_status4, delete_orders, delete_all_orders
 from user.api import register, send_verify_code, phone_login, user_login, user_logout, user_profile
 
 urlpatterns = [
@@ -53,6 +53,8 @@ urlpatterns = [
     url(r'^api/order/order_status2/$', order_status2),
     url(r'^api/order/order_status3/$', order_status3),
     url(r'^api/order/order_status4/$', order_status4),
+    url(r'^api/order/delete_orders/$', delete_orders),
+    url(r'^api/order/delete_all_orders/$', delete_all_orders),
 
     url(r'^api/mine/change_password/$', change_password),
     url(r'^api/mine/look_wait_payment/$', look_wait_payment),

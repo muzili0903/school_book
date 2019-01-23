@@ -5,6 +5,7 @@
 @Author  : muzili
 @File    : logic
 '''
+from books.models import Comment
 from cart.models import Cart, CartHistory
 from order.models import Order
 from user.logic import produce_id
@@ -43,9 +44,22 @@ def wait_comment(uid, oid):
     return order.to_dict()
 
 
-def comment(uid, oid):
-    '''待评价'''
+def comment(uid, oid, gid, com):
+    '''已评价'''
+    Comment.objects.create(u_id=uid, g_id=gid, comment=com)
     order = Order.objects.filter(u_id=uid, o_id=oid).first()
     order.o_status = 4
     order.save()
     return order.to_dict()
+
+
+def delete_order(uid, oid):
+    '''删除选中订单'''
+    Order.objects.filter(u_id=uid, o_id=oid).delete()
+    return {'msg': 'delete success'}
+
+
+def delete_all_order(uid):
+    '''删除所有订单'''
+    Order.objects.filter(u_id=uid, o_status__in=[3, 4]).delete()
+    return {'msg': 'delete success'}
