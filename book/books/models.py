@@ -41,5 +41,5 @@ class Comment(models.Model):
         return {
             'uid': self.u_id,
             'comment': self.comment,
-            'com_data': self.com_data,
+            'com_data': self.com_data.strftime('%Y-%m-%d %H:%M:%S'),
         }
