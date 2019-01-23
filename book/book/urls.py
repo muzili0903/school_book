@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from books.api import best_seller, computer_book, life_book, success_book, sale_descending_order, sort_type_book
+from books.api import best_seller, computer_book, life_book, success_book, sale_descending_order, sort_type_book, \
+    book_detail
 from books.api import price_descending_order, price_ascending_order
 from cart.api import add_goods_cart, add_cart_num, reduce_cart_num, is_select_good, is_all_select_good, is_delete_cart
 from mine.api import change_password, look_wait_payment, look_wait_goods, look_wait_comments, look_finish_comment, \
@@ -41,6 +42,7 @@ urlpatterns = [
     url(r'^api/books/price_ascending_order/$', price_ascending_order),
     url(r'^api/books/sale_descending_order/$', sale_descending_order),
     url(r'^api/books/sort_type_book/$', sort_type_book),
+    url(r'^api/books/book_detail/$', book_detail),
 
     url(r'^api/cart/add_goods_cart/$', add_goods_cart),
     url(r'^api/cart/add_cart_num/$', add_cart_num),

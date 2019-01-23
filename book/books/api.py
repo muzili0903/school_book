@@ -56,3 +56,9 @@ def sort_type_book(request):
     g_type = request.GET.get('type')
     resulet = sort_type(g_type)
     return render_json(resulet)
+
+
+def book_detail(request):
+    gid = request.GET.get('gid')
+    result = detail(gid)
+    return render_json(result)
