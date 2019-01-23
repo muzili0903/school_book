@@ -24,7 +24,7 @@ class Cart(models.Model):
         total_price = 0
         for cart in carts:
             goods.append(cart.to_dict())
-            total_price += cart.c_total_price * cart.c_num
+            total_price += cart.c_total_price
             cart.delete()
         return {'good': goods, 'total_price': total_price}
 
