@@ -4,7 +4,7 @@ from books.models import Goods
 
 
 def search_book():
-    books = Goods.objects.filter(g_id__contains='93')
+    books = Goods.objects.all().order_by('-g_sale')
     book_list = [book.to_dict() for book in books]
     return book_list
 
