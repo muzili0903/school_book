@@ -13,7 +13,7 @@ from django.core.cache import cache
 
 from common.verify_code import gen_verify_code
 from book import yzx_config
-from user.models import User
+from user.models import User, Profile
 
 
 def check_code(phone, vcode):
@@ -70,3 +70,8 @@ def verify_login(username, password):
         if check_password(password, user.u_password):
             return user
     return None
+
+
+def set_profile(uid, address, phone, name):
+    Profile.objects.update_or_create(u_id=uid, p_address=address, p_phone=phone, p_name=name)
+    return {'msg': 'change success'}
