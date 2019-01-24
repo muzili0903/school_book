@@ -72,6 +72,6 @@ def verify_login(username, password):
     return None
 
 
-def set_profile(uid, address, phone, name):
-    Profile.objects.update_or_create(u_id=uid, p_address=address, p_phone=phone, p_name=name)
-    return {'msg': 'change success'}
+# def set_profile(uid, address, phone, name):
+#     Profile.objects.update_or_create(u_id=uid, p_address=address, p_phone=phone, p_name=name)
+#     return {'msg': 'change success'}

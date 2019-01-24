@@ -1,4 +1,3 @@
-
 # Create your views here.
 from books.models import Goods
 
@@ -49,3 +48,8 @@ def sort_type(g_type):
     books = Goods.objects.filter(g_type=g_type)[0:20]
     book_list = [book.to_dict() for book in books]
     return book_list
+
+
+def detail(gid):
+    book = Goods.objects.filter(g_id=gid).first()
+    return book.to_dict()

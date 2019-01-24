@@ -14,6 +14,7 @@ from user.models import User
 
 class AuthMiddleware(MiddlewareMixin):
     WHITE_LIST = [
+        '/admin/',
         '/api/user/register/',
         '/api/user/verify_code/',
         '/api/user/phone_login/',

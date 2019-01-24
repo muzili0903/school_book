@@ -1,7 +1,8 @@
 # Create your views here.
 from common.defind_error import LOGIN_ERROR
 from lib.http import render_json
-from user.logic import verify_code, verify_msg, check_code, verify_login, set_profile
+from user.froms import ProfileFrom
+from user.logic import verify_code, verify_msg, check_code, verify_login
 from user.models import User
 
 
@@ -49,9 +50,10 @@ def user_logout(request):
 
 
 def user_profile(request):
-    uid = request.user.u_id
-    address = request.POST.get('address')
-    phone = request.POST.get('phone')
-    name = request.POST.get('name')
-    result = set_profile(uid, address, phone, name)
-    return render_json(result)
+    froms = ProfileFrom(request.POST)
+    if froms.is_valid():
+        user = request.user
+        user.profile.__dict__.update(froms.cleaned_data)
+        user.profile.save()
+        return render_json({'msg': 'change success'})
+    return render_json({'msg': 'change fail'})
