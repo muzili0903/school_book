@@ -10,11 +10,17 @@ class User(models.Model):
     u_password = models.CharField(max_length=128, verbose_name='密码')
 
     def to_dict(self):
-        user_msg = {
+        return {
             'u_name': self.u_name,
             'u_phone': self.u_phone,
+            'profile': self.profile
         }
-        return user_msg
+
+    @property
+    def profile(self):
+        if not hasattr(self, '_profile'):
+            self._profile, _ = Profile.objects.get_or_create(u_id=self.u_id)
+        return self._profile
 
 
 class Profile(models.Model):
